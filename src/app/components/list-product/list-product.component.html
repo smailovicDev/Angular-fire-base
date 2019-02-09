@@ -1,0 +1,28 @@
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of products; index as i">
+      <div class="card">
+        <img class="card-img-top" [src]="'https://picsum.photos/200/300?image='+i"  alt="">
+        <div class="card-body">
+          <h4 class="card-title">{{ product.title | titlecase }}</h4>
+          <div class="card-text">
+             {{ product.description }}
+
+             <ul class="list-group">
+               <li class="list-group-item">Stock: {{ product.quantity | number }}</li>
+               <li class="list-group-item">Price: {{ product.price | currency }}</li>
+               <li class="list-group-item"> 
+                  <button class="btn btn-block" [ngClass]="{
+                      'btn-success': product.active,
+                      'btn-warning': !product.active
+                }">
+                <i class="fa fa-power-off"></i> {{ product.active }}
+                </button> 
+              </li>
+             </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
