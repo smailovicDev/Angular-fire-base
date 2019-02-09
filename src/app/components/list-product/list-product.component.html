@@ -1,6 +1,16 @@
 
-  <div class="row">
-    <div class="col-md-4" *ngFor="let product of products; index as i">
+  <div class="row my-3">
+    <div class="col-md-11">
+      <input type="text" placeholder="Search a product..." class="form-control">
+    </div>
+    <div class="col-md-1 text-right">
+      <a routerLink="/products/add" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="row ">
+    <div (dblclick)="removeProduct(product.id)" class="col-md-4" *ngFor="let product of products; index as i">
       <div class="card">
         <img class="card-img-top" [src]="'https://picsum.photos/200/200?image='+i"  alt="">
         <div class="card-body">

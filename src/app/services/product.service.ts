@@ -42,4 +42,8 @@ export class ProductService {
      return this.ProductCollection.doc(id).update(product);
    }
 
+   deleteProduct(id) {
+     return this.ProductCollection.doc(id).delete();
+   }
+
 }
