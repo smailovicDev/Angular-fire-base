@@ -19,8 +19,15 @@ export class ListProductComponent implements OnInit {
   listProduct() {
     this.productService.getProducts()
         .subscribe(res => {
+          console.log(res)
           this.products = res;
         })
+  }
+
+  powerProduct(product) {
+    this.productService.changeActiveProduct(product)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
   }
 
 }
