@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/login/login.component';
 import { ShowProductComponent } from './components/show-product/show-product.component';
@@ -9,11 +10,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: '/products', pathMatch: 'full' },
-  {path: "products", component: ListProductComponent},
-  {path: "products/add", component: NewProductComponent},
-  {path: "products/edit/:id", component: EditProductComponent},
-  {path: "products/show/:id", component: ShowProductComponent},
+  {path: "", redirectTo: '/products', pathMatch: 'full', canActivate: [AuthGuard] },
+  {path: "products", children: [
+    {path: "", component: ListProductComponent},
+    {path: "add", component: NewProductComponent},
+    {path: "edit/:id", component: EditProductComponent},
+    {path: "show/:id", component: ShowProductComponent},
+  ], canActivate: [AuthGuard]},
+  
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "**", component: PageNotFoundComponent}

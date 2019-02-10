@@ -11,17 +11,20 @@ export class ListProductComponent implements OnInit {
 
   constructor(private productService: ProductService) { }
   
+  filter = "";
+  resultSearch: any[] = [];
   products: any[] = [];
 
   ngOnInit() {
+    console.log('salam');
     this.listProduct();
   }
 
   listProduct() {
     this.productService.getProducts()
         .subscribe(res => {
-          console.log(res)
-          this.products = res;
+          console.log('data: ', res)
+          this.resultSearch = this.products = res;
         })
   }
 
@@ -57,6 +60,15 @@ export class ListProductComponent implements OnInit {
     })
 
     
+  }
+
+  serach() {
+    if(this.filter != "") {
+      this.resultSearch = this.products.filter(product => product.title.toLowerCase().includes(this.filter.toLowerCase()) || product.description.toLowerCase().includes(this.filter.toLowerCase()));
+    }else {
+      this.resultSearch = this.products;
+    }
+   
   }
 
 }
