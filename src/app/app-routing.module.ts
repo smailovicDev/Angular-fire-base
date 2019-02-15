@@ -10,17 +10,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: '/products', pathMatch: 'full', canActivate: [AuthGuard] },
-  {path: "products", children: [
-    {path: "", component: ListProductComponent},
-    {path: "add", component: NewProductComponent},
-    {path: "edit/:id", component: EditProductComponent},
-    {path: "show/:id", component: ShowProductComponent},
+  {path: '', redirectTo: '/products', pathMatch: 'full', canActivate: [AuthGuard] },
+  {path: 'products', children: [
+    {path: '', component: ListProductComponent},
+    {path: 'add', component: NewProductComponent},
+    {path: 'edit/:id', component: EditProductComponent},
+    {path: 'show/:id', component: ShowProductComponent},
   ], canActivate: [AuthGuard]},
-  
-  {path: "login", component: LoginComponent},
-  {path: "register", component: RegisterComponent},
-  {path: "**", component: PageNotFoundComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
