@@ -26,12 +26,12 @@ export class NavbarComponent implements OnInit {
   }
 
   getConnectedUser() {
-    this.authService.user().subscribe( usr => {
-      this.authService.getUserById( usr.uid).subscribe( res => {
+    // this.authService.user().subscribe( usr => {
+    //   this.authService.getUserById( usr.uid).subscribe( res => {
 
-        console.log( res );
-      });
-    });
+    //     console.log( res );
+    //   });
+    // });
   }
 
 }
